@@ -102,7 +102,7 @@ unlink(tmp_paths)
 
 
 # Preprocessing -----------------------------------------------------------
-
+warnings
 # because the date the rainfall is recorded on is the day after the actual rainfall, a variable is needed that assigns the
 # weather reading to the previous day's record. Use dplyr::lead() for this
 rain_data <- rain_data %>% 
@@ -193,6 +193,7 @@ temperature_data <- temperature_data %>% select(-Bureau.of.Meteorology.station.n
 # join the temperature and rain datasets together
 weather_data <- rain_data %>% 
   full_join(temperature_data, by = c("weather_date", "cities" = "temp_cities"))
+
 
 # write file
 write.csv(weather_data, "data/cleaned_data/preprocessed_rain_temp_data.csv", row.names = F)
