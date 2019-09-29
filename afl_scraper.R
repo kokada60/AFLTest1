@@ -66,7 +66,7 @@ afl_scraper <- function(season_1, season_2) {
     
     for(j in 1:length(all_detail_pages)) {
       print(paste0("Scraping Game: ", j, " of ", length(all_detail_pages)))
-      each_detail_pages <- read_html(paste0("https://afltables.com/afl/", all_detail_pages[j])) 
+      each_detail_page <- read_html(paste0("https://afltables.com/afl/", all_detail_pages[j])) 
       
       team1 <- html_node(each_detail_page, "br+ table tr:nth-child(2) td:nth-child(1)") %>% html_text()
       t1_q1<- html_node(each_detail_page, "br+ table tr:nth-child(2) td:nth-child(2)") %>% html_text()
